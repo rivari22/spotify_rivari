@@ -1,6 +1,12 @@
 {
   "extends": ["next/core-web-vitals", "prettier "],
   "rules": {
+    "at-rule-no-unknown": [ true, {
+      "ignoreAtRules": [
+        "extends",
+        "tailwind"
+      ]
+    }],
     "import/no-unresolved": 2,
     "import/export": 2,
     "import/default": 2,
