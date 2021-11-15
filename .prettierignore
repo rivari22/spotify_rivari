@@ -1,0 +1,4 @@
+*.snap
+*.svg
+build
+coverage
