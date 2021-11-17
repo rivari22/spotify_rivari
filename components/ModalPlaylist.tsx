@@ -2,7 +2,7 @@ import React from 'react';
 import PlaylistBar from './PlaylistBar';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
-// TODO GIVE PROPS
+// TODO GIVE playlist PROPS
 interface Props {
   playlist: any;
   isVisible: boolean;

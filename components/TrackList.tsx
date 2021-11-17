@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ITrack } from './Content';
 import { ImHeadphones } from 'react-icons/im';
 import { BsFillPauseFill, BsFillPlayFill, BsFillTrashFill } from 'react-icons/bs';

@@ -2,8 +2,8 @@ import { HiOutlineShieldCheck } from 'react-icons/hi';
 import { MdOutlineSettings } from 'react-icons/md';
 import { BiBell } from 'react-icons/bi';
 import { ViewGridIcon } from '@heroicons/react/solid';
-// import Dropdown from "./Dropdown";
-import { useEffect, useState } from 'react';
+import Dropdown from "./Dropdown";
+import { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import PlaylistBar from './PlaylistBar';
 import { spotifyAPI } from '../utils';
@@ -36,21 +36,18 @@ const RightSection = () => {
   }, [accessToken]);
 
   return (
-    <section className="p-4 space-y-8 pr-8">
+    <section className="p-4 space-y-11 pr-8 mt-[2px]">
       <div className="flex space-x-2 items-center justify-between">
-        {/* Icons */}
-        <div className="flex items-center space-x-4 border-2 border-[#262626] rounded-full h-12 py-3 px-4">
+        <div className="flex items-center space-x-4 border-2 border-[#262626] rounded-full h-14 py-3 px-4">
           <HiOutlineShieldCheck className="text-[#CCCCCC] text-xl" />
           <MdOutlineSettings className="text-[#CCCCCC] text-xl" />
           <div>
             <BiBell className="text-[#CCCCCC] text-xl" />
           </div>
         </div>
-        {/* Profile */}
-        {/* <Dropdown /> */}
+        <Dropdown />
       </div>
 
-      {/* Playlist Played Tracks */}
       <div className="bg-[#0D0D0D] border-2 border-[#262626] p-4 rounded-xl space-y-4">
         <div className="flex items-center justify-between">
           <h4 className="text-white font-semibold text-sm">Playlist</h4>

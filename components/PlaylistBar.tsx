@@ -14,13 +14,13 @@ interface trackPlaylist extends ITrack {
   totalTracks: number;
 }
 
-interface ICardProps {
+interface IPlaylistProps {
   track: trackPlaylist;
   key: number;
   isAddTrackPlaylist?: boolean;
 }
 
-const PlaylistBar = (props: ICardProps) => {
+const PlaylistBar = (props: IPlaylistProps) => {
   const [play, setPlay] = useRecoilState(playState);
   const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
   const [_, setGetDetailPlaylists] = useRecoilState(getDetailPlaylist);
@@ -44,10 +44,10 @@ const PlaylistBar = (props: ICardProps) => {
       <div className="flex items-center space-x-3">
         <img
           src={props.track.image}
-          className="rounded-full w-[52px] h-[52px] cursor-pointer"
-          onClick={handleClickPlay}
+          className="rounded-full w-[52px] h-[52px] cursor-pointer hover:scale-110"
+          onClick={props.isAddTrackPlaylist ? undefined : handleClickPlay}
         />
-        <div onClick={handleGetDetailPlaylist}>
+        <div onClick={props.isAddTrackPlaylist ? undefined : handleGetDetailPlaylist}>
           <h4 className="text-white text-[13px] mb-0.5 font-semibold hover:underline cursor-pointer truncate max-w-[150px]">
             {props.track.title}
           </h4>

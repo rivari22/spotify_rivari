@@ -19,18 +19,30 @@ const MediaPlayer = ({ accessToken }: IMediaPlayerProps) => {
   }, [playingTrack]);
 
   return (
-    <div className="border-2 bg-white h-[80px]">
-      <SpotifyPlayer
-        token={accessToken}
-        uris={[playingTrack.uri]}
-        play={play}
-        showSaveIcon
-        callback={(state) => {
-          setPlay(state.isPlaying);
-        }}
-      />
-      ;
-    </div>
+    <SpotifyPlayer
+      styles={{
+        activeColor: '#fff',
+        bgColor: '#181818',
+        color: '#fff',
+        loaderColor: '#fff',
+        sliderColor: '#1cb954',
+        trackArtistColor: '#ccc',
+        trackNameColor: '#fff',
+        height: '70px',
+        sliderTrackColor: '#535353',
+        sliderTrackBorderRadius: '4px',
+        sliderHandleColor: '#fff',
+        errorColor: '#fff'
+      }}
+      token={accessToken}
+      uris={[playingTrack.uri]}
+      play={play}
+      showSaveIcon
+      magnifySliderOnHover={true}
+      callback={(state) => {
+        setPlay(state.isPlaying);
+      }}
+    />
   );
 };
 

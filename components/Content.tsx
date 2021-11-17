@@ -1,4 +1,3 @@
-import { signOut, useSession } from 'next-auth/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { addTrackToPlaylist, playlistTrack } from '../atoms/playerAtom';
@@ -8,8 +7,7 @@ import ModalPlaylist from './ModalPlaylist';
 import SearchBar from './SearchBar';
 import TrackList from './TrackList';
 import { ToastContainer, toast } from 'react-toastify';
-
-interface IContentProps {}
+import useSetAccessTokenSpotify from '../hooks/useSetAccessTokenSpotify';
 
 export interface ITrack {
   id: string;
@@ -20,16 +18,15 @@ export interface ITrack {
   popularity?: number;
 }
 
-const Content = (props: IContentProps) => {
-  const {
-    data: { accessToken }
-  } = useSession();
+const Content = () => {
   const [playlist, setPlaylist] = useRecoilState(playlistTrack);
   const [searchValue, setSearchValue] = useState<string>('');
   const [searchResults, setSearchResults] = useState<Array<ITrack>>([]);
   const [newReleases, setNewReleases] = useState<Array<ITrack>>([]);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [addTrack, setAddTrack] = useRecoilState(addTrackToPlaylist);
+
+  const { session } = useSetAccessTokenSpotify()
 
   const getPlaylist = useCallback(async () => {
     const res = await spotifyAPI.getUserPlaylists();
@@ -64,12 +61,7 @@ const Content = (props: IContentProps) => {
   }, [addTrack]);
 
   useEffect(() => {
-    if (!accessToken) return;
-    spotifyAPI.setAccessToken(accessToken);
-  }, [accessToken]);
-
-  useEffect(() => {
-    if (!accessToken) return;
+    if (!session.accessToken) return;
     if (!searchValue) return setSearchResults([]);
 
     const searchTracks = async () => {
@@ -90,10 +82,10 @@ const Content = (props: IContentProps) => {
       } catch (error) {}
     };
     searchTracks();
-  }, [searchValue, accessToken]);
+  }, [searchValue, session.accessToken]);
 
   useEffect(() => {
-    if (!accessToken) return;
+    if (!session.accessToken) return;
 
     const getNewReleases = async () => {
       try {
@@ -112,10 +104,10 @@ const Content = (props: IContentProps) => {
       } catch (error) {}
     };
     getNewReleases();
-  }, [accessToken]);
+  }, [session.accessToken]);
 
   return (
-    <section className="bg-black ml-24 py-4 space-y-8 md:max-w-6xl flex-grow md:mr-2.5 xl:w-[1150px]">
+    <section className="bg-black ml-24 py-4 space-y-8 mt-[-30px] md:max-w-6xl flex-grow md:mr-2.5 xl:w-[1150px]">
       <ToastContainer />
       <ModalPlaylist
         isVisible={isModalVisible}
@@ -157,7 +149,7 @@ const Content = (props: IContentProps) => {
           <h2 className="text-white font-bold mb-3">
             {searchResults.length === 0 ? 'New Releases Album' : 'Tracks'}
           </h2>
-          <div className="space-y-3 border-2 border-[#262626] rounded-2xl p-3 bg-[#0D0D0D] overflow-y-scroll h-[1000px] md:h-96 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-thumb-rounded hover:scrollbar-thumb-gray-500 w-[830px]">
+          <div className="space-y-3 border-2 border-[#262626] rounded-2xl p-3 bg-[#0D0D0D] overflow-y-scroll h-[1000px] md:h-96 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-thumb-rounded hover:scrollbar-thumb-gray-500 w-[830px] mr-4">
             {searchResults.length === 0
               ? newReleases.slice(4, newReleases.length).map((track, index) => (
                   <TrackList
