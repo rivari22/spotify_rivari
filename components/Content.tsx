@@ -27,6 +27,8 @@ const Content = (props: IContentProps) => {
   useEffect(() => {
     if (!accessToken) return;
     spotifyAPI.setAccessToken(accessToken);
+    // ex: fetch playlist
+    // spotifyAPI.getUserPlaylists().then((item) => console.log(item))
   }, [accessToken]);
 
   useEffect(() => {
@@ -76,7 +78,7 @@ const Content = (props: IContentProps) => {
   }, [accessToken]);
 
   return (
-    <section className="bg-black ml-24 py-4 space-y-8 md:max-w-6xl flex-grow md:mr-2.5">
+    <section className="bg-black ml-24 py-4 space-y-8 md:max-w-6xl flex-grow md:mr-2.5 xl:w-[1150px]">
       <SearchBar value={searchValue} handleChange={(e) => setSearchValue(e.target.value)} />
       {/* FIXME RESPONSIVE COLS MOBILE */}
       <div className="grid overflow-y-scroll scrollbar-hide h-96 py-4 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:grid-cols-1 gap-x-4 gap-y-8 p-4">

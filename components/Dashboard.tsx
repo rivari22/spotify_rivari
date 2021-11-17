@@ -18,7 +18,7 @@ const Dashboard = (props: IDashboardProps) => {
       <Content />
 
       <div className="fixed bottom-0 right-0 left-0 z-50">
-        <MediaPlayer accessToken={session.accessToken} trackUri={playingTrack.uri} />
+        <MediaPlayer accessToken={session.accessToken} />
       </div>
     </main>
   );

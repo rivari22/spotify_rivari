@@ -17,7 +17,6 @@ const CardTrack = (props: ICardProps) => {
     setPlay(false);
     setPlayingTrack(props.track);
     if (props.track.uri === playingTrack.uri) setPlay(!play);
-    else if (props.track.uri !== playingTrack.uri) setPlay(true);
   };
 
   return (

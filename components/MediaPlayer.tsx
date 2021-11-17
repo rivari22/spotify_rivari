@@ -1,22 +1,39 @@
 import React, { useEffect } from 'react';
+import SpotifyPlayer from 'react-spotify-web-playback';
 import { useRecoilState } from 'recoil';
 import { playingTrackState, playState } from '../atoms/playerAtom';
 
 interface IMediaPlayerProps {
   accessToken: any;
-  trackUri: string;
 }
 
-const MediaPlayer = ({ accessToken, trackUri }: IMediaPlayerProps) => {
+const MediaPlayer = ({ accessToken }: IMediaPlayerProps) => {
   const [play, setPlay] = useRecoilState(playState);
   const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
 
   useEffect(() => {
     if (!accessToken) return;
-    if (trackUri) setPlay(true);
-  }, [trackUri]);
+    if (playingTrack.uri) {
+      setPlay(true);
+    }
 
-  return <div className="border-2 bg-white h-[80px]"></div>;
+    console.log(playingTrack, ' playingTrack');
+  }, [playingTrack]);
+
+  return (
+    <div className="border-2 bg-white h-[80px]">
+      <SpotifyPlayer
+        token={accessToken}
+        uris={[playingTrack.uri]}
+        play={play}
+        showSaveIcon
+        callback={(state) => {
+          setPlay(state.isPlaying);
+        }}
+      />
+      ;
+    </div>
+  );
 };
 
 export default MediaPlayer;
