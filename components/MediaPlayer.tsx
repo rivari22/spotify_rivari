@@ -9,15 +9,13 @@ interface IMediaPlayerProps {
 
 const MediaPlayer = ({ accessToken }: IMediaPlayerProps) => {
   const [play, setPlay] = useRecoilState(playState);
-  const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
+  const [playingTrack] = useRecoilState(playingTrackState);
 
   useEffect(() => {
     if (!accessToken) return;
     if (playingTrack.uri) {
       setPlay(true);
     }
-
-    console.log(playingTrack, ' playingTrack');
   }, [playingTrack]);
 
   return (

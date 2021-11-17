@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { ITrack } from './Content';
 import { ImHeadphones } from 'react-icons/im';
-import { BsFillPauseFill, BsFillPlayFill } from 'react-icons/bs';
-import { AiFillHeart } from 'react-icons/ai';
+import { BsFillPauseFill, BsFillPlayFill, BsFillTrashFill } from 'react-icons/bs';
+import { HiPlusCircle } from 'react-icons/hi';
 import { useRecoilState } from 'recoil';
 import { playingTrackState, playState } from '../atoms/playerAtom';
 
 interface Props {
   track: ITrack;
   key: number;
+  isPlaylist?: boolean;
+  handleRemoveTrack?: (uri) => void;
+  handleAddTrack?: (uri) => void;
 }
 
 const TrackList = (props: Props) => {
-  const [hasLiked, setHasLiked] = useState<boolean>(false);
   const [play, setPlay] = useRecoilState(playState);
   const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
 
@@ -43,11 +45,17 @@ const TrackList = (props: Props) => {
           <h4>{props.track.popularity}</h4>
         </div>
         <div className="flex items-center rounded-full border-2 border-[#262626] w-[85px] h-10 relative cursor-pointer group-hover:border-white/40">
-          <AiFillHeart
-            className={`text-xl ml-3 iconCustom ${hasLiked ? 'text-[#1ed760]' : 'text-[#868686]'}`}
-            // TODO POST TO LIKED SONG SPOTIFY
-            onClick={() => setHasLiked(!hasLiked)}
-          />
+          {props.isPlaylist ? (
+            <BsFillTrashFill
+              className="text-xl ml-3 iconCustom text-[#868686]"
+              onClick={() => props.handleRemoveTrack(props.track.uri)}
+            />
+          ) : (
+            <HiPlusCircle
+              className="text-xl ml-3 iconCustom text-[#868686]"
+              onClick={() => props.handleAddTrack(props.track.uri)}
+            />
+          )}
           {props.track.uri === playingTrack.uri && play ? (
             <div
               className="h-10 w-10 rounded-full border border-[#15883e] flex items-center justify-center absolute -right-0.5 bg-[#15883e] icon hover:scale-110"
