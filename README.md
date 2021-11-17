@@ -15,6 +15,9 @@
 
 # Preview App
 ![image](https://user-images.githubusercontent.com/54411969/142251526-001ae38b-2859-4a82-b818-1df39d86e6ec.png)
+![image](https://user-images.githubusercontent.com/54411969/142252410-aa5c7c25-1aa1-4bd3-acac-8a7f16862199.png)
+![image](https://user-images.githubusercontent.com/54411969/142252605-c7c839d5-a005-4270-af3a-f81405df5029.png)
+
 
 inspired: 
 https://dribbble.com/shots/15165960-Spotify-Redesign
