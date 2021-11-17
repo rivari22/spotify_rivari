@@ -7,5 +7,11 @@ export const playState = atom({
 
 export const playingTrackState = atom({
   key: "playingTrackState",
-  default: "",
+  default: {
+    id: '',
+    artist: '',
+    title: '',
+    uri: '',
+    albumUrl: ''
+  },
 });
