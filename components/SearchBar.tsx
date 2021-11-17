@@ -39,8 +39,8 @@ const SearchBar = (props: ISearchProps) => {
 
       <div className="flex items-center divide-dotted divide-x-2 divide-[#333] ml-auto">
         <div className="flex space-x-2 pr-5">
-          {helpSuggestSearch.map((item) => (
-            <button className="tagCustom">{item.label}</button>
+          {helpSuggestSearch.map((item, index) => (
+            <button className="tagCustom" key={index}>{item.label}</button>
           ))}
         </div>
 

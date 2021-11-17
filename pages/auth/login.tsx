@@ -22,8 +22,7 @@ const login = ({ providers }: ILoginProps) => {
 
   useEffect(() => {
     if (session) {
-      setTimeout(() => router.replace('/'), 3000);
-      // router.replace('/')
+      router.replace('/')
     }
   }, [session]);
 

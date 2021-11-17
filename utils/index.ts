@@ -1,0 +1,1 @@
+export { spotifyAPI } from './SpotifyApi';
