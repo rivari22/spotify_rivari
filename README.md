@@ -13,6 +13,13 @@
 2. yarn (recommended v1.22.11)
 3. client id and secret id developer spotify
 
+# Preview App
+![image](https://user-images.githubusercontent.com/54411969/142251526-001ae38b-2859-4a82-b818-1df39d86e6ec.png)
+
+inspired: 
+https://dribbble.com/shots/15165960-Spotify-Redesign
+
+
 # Next.js + Tailwind CSS Example
 
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
