@@ -1,3 +1,18 @@
+## NOTES: THIS APP ONLY WORK (Can play song) WITH SPOTIFY PREMIUM, PLEASE USE PREMIUM ACC
+
+# HOW to run:
+1. clone this project
+2. yarn install
+3. copy .env example -> .env
+4. fill client id and secret with your account 
+6. Register redirect uri at dashboard developer spotify 
+5. you can check this https://developer.spotify.com/documentation/web-api/quick-start/ (client id and secret id)
+
+# Requirement: 
+1. node js (recommended v14)
+2. yarn (recommended v1.22.11)
+3. client id and secret id developer spotify
+
 # Next.js + Tailwind CSS Example
 
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
