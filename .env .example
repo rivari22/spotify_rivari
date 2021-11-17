@@ -1,0 +1,3 @@
+SPOTIFY_CLIENT_ID=yourClientId
+SPOTIFY_CLIENT_SECRET=yourSecretId
+NEXTAUTH_URL=http://localhost:3000
